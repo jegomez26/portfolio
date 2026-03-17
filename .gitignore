@@ -1,0 +1,29 @@
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Node.js (if using build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
