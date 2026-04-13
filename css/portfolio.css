@@ -1,12 +1,15 @@
 :root {
-    --bg: #0e0f13;
-    --surface: #16181f;
-    --surface2: #1e2028;
-    --text: #f0f0f0;
-    --muted: #8a8d9a;
-    --accent: #f97316;
-    --accent2: #3b82f6;
-    --border: #2a2c36;
+    --bg: #090b14;
+    --surface: rgba(19, 24, 39, 0.78);
+    --surface2: rgba(24, 30, 49, 0.82);
+    --text: #f8faff;
+    --muted: #a6b0c3;
+    --accent: #8b5cf6;
+    --accent2: #22d3ee;
+    --border: rgba(148, 163, 184, 0.22);
+    --ring: rgba(139, 92, 246, 0.35);
+    --shadow-soft: 0 12px 30px rgba(3, 8, 20, 0.35);
+    --shadow-lift: 0 18px 48px rgba(3, 8, 20, 0.45);
 }
 
 *,
@@ -31,8 +34,9 @@ body {
 
 body {
     background-image:
-        radial-gradient(circle at top right, rgba(249, 115, 22, 0.08), transparent 28%),
-        radial-gradient(circle at top left, rgba(59, 130, 246, 0.08), transparent 30%);
+        radial-gradient(circle at 85% -10%, rgba(34, 211, 238, 0.18), transparent 32%),
+        radial-gradient(circle at 8% 0%, rgba(139, 92, 246, 0.2), transparent 34%),
+        linear-gradient(180deg, #090b14 0%, #0c1020 45%, #0a0d18 100%);
 }
 
 a {
@@ -66,9 +70,10 @@ nav {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(14, 15, 19, 0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(9, 11, 20, 0.72);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 30px rgba(2, 6, 18, 0.35);
 }
 
 .nav-inner {
@@ -90,7 +95,7 @@ nav {
 }
 
 .nav-logo span {
-    color: var(--accent);
+    color: var(--accent2);
 }
 
 .nav-links {
@@ -110,6 +115,7 @@ nav {
 .nav-links a:hover,
 .nav-links a.active {
     color: var(--text);
+    text-shadow: 0 0 18px rgba(34, 211, 238, 0.35);
 }
 
 .nav-cta,
@@ -117,7 +123,7 @@ nav {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
     color: #fff;
     border: none;
     cursor: pointer;
@@ -126,7 +132,8 @@ nav {
     font-family: "Poppins", sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    box-shadow: 0 10px 24px rgba(77, 91, 240, 0.35);
+    transition: transform 0.25s ease, opacity 0.2s ease, box-shadow 0.25s ease;
 }
 
 .nav-cta {
@@ -136,8 +143,9 @@ nav {
 
 .nav-cta:hover,
 .btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+    opacity: 0.95;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(77, 91, 240, 0.45);
 }
 
 .btn-secondary {
@@ -146,18 +154,19 @@ nav {
     gap: 0.5rem;
     background: transparent;
     color: var(--text);
-    border: 1.5px solid var(--border);
+    border: 1.5px solid rgba(148, 163, 184, 0.34);
     padding: 0.9rem 2rem;
     border-radius: 10px;
     font-family: "Poppins", sans-serif;
     font-size: 0.95rem;
     font-weight: 600;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
 }
 
 .btn-secondary:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
+    border-color: var(--accent2);
+    background: rgba(34, 211, 238, 0.08);
+    transform: translateY(-3px);
 }
 
 .hamburger {
@@ -223,6 +232,7 @@ section {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
     margin-bottom: 1rem;
+    letter-spacing: -0.02em;
 }
 
 .section-sub {
@@ -303,9 +313,9 @@ section {
     margin-bottom: 1.5rem;
     padding: 0.35rem 0.85rem;
     border-radius: 999px;
-    background: rgba(249, 115, 22, 0.1);
-    border: 1px solid rgba(249, 115, 22, 0.3);
-    color: var(--accent);
+    background: rgba(34, 211, 238, 0.12);
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    color: var(--accent2);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -316,7 +326,7 @@ section {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--accent);
+    background: var(--accent2);
     animation: pulse 2s infinite;
 }
 
@@ -339,7 +349,10 @@ section {
 }
 
 .hero-name .accent {
-    color: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .hero-title {
@@ -370,8 +383,10 @@ section {
 .gallery-panel {
     background: var(--surface);
     border: 1.5px solid var(--border);
+    backdrop-filter: blur(8px);
     position: relative;
     overflow: hidden;
+    box-shadow: var(--shadow-soft);
 }
 
 .hero-photo-frame {
@@ -492,7 +507,8 @@ section {
 .form-shell {
     background: var(--surface2);
     border: 1.5px solid var(--border);
-    border-radius: 16px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-soft);
 }
 
 .skill-card {
@@ -509,15 +525,16 @@ section {
 .gallery-tile:hover,
 .experience-card:hover,
 .contact-link:hover {
-    border-color: var(--accent);
-    transform: translateY(-4px);
+    border-color: var(--ring);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
 }
 
 .skill-icon-wrap {
     width: 52px;
     height: 52px;
     border-radius: 14px;
-    background: rgba(249, 115, 22, 0.1);
+    background: rgba(139, 92, 246, 0.14);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -525,7 +542,7 @@ section {
 }
 
 .skill-icon-wrap.blue {
-    background: rgba(59, 130, 246, 0.1);
+    background: rgba(34, 211, 238, 0.12);
     color: var(--accent2);
 }
 
@@ -603,6 +620,7 @@ section {
 
 .gallery-group {
     padding: 1.5rem;
+    background-image: linear-gradient(160deg, rgba(139, 92, 246, 0.07), rgba(34, 211, 238, 0.03));
 }
 
 .gallery-group-head {
@@ -615,7 +633,7 @@ section {
 }
 
 .gallery-kicker {
-    color: var(--accent);
+    color: var(--accent2);
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -635,7 +653,11 @@ section {
 
 .gallery-count {
     color: var(--muted);
-    font-size: 0.82rem;
+    font-size: 0.78rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(15, 23, 42, 0.55);
     white-space: nowrap;
 }
 
@@ -648,13 +670,13 @@ section {
 .gallery-tile {
     appearance: none;
     width: 100%;
-    background: var(--surface);
+    background: rgba(15, 22, 38, 0.86);
     border: 1.5px solid var(--border);
     border-radius: 18px;
     overflow: hidden;
     cursor: pointer;
     text-align: left;
-    transition: border-color 0.25s ease, transform 0.25s ease;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .gallery-tile img {
@@ -723,13 +745,15 @@ section {
     background: var(--surface2);
     border: 1.5px solid var(--border);
     border-radius: 20px;
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow-soft);
     transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .website-link-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-5px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+    border-color: var(--ring);
+    transform: translateY(-7px);
+    box-shadow: var(--shadow-lift);
 }
 
 .website-link-thumb {
@@ -815,7 +839,7 @@ section {
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: rgba(249, 115, 22, 0.1);
+    background: rgba(139, 92, 246, 0.13);
     color: var(--accent);
     display: flex;
     align-items: center;
@@ -824,7 +848,7 @@ section {
 }
 
 .contact-link-icon.blue {
-    background: rgba(59, 130, 246, 0.1);
+    background: rgba(34, 211, 238, 0.12);
     color: var(--accent2);
 }
 
@@ -881,12 +905,13 @@ textarea {
     font-family: "DM Sans", sans-serif;
     font-size: 0.9rem;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input:focus,
 textarea:focus {
-    border-color: var(--accent);
+    border-color: var(--accent2);
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.14);
 }
 
 input::placeholder,
@@ -992,8 +1017,9 @@ footer {
 .lightbox-figure {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 24px;
+    border-radius: 20px;
     overflow: hidden;
+    box-shadow: var(--shadow-lift);
 }
 
 .lightbox-figure img {
