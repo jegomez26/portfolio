@@ -2,7 +2,46 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.lucide && typeof window.lucide.createIcons === "function") {
         window.lucide.createIcons();
     }
+    emailjs.init("3dt4sTgwM_GhZvnJr");
 
+    
+
+const contactForm = document.getElementById('contact-form');
+const successMessage = document.getElementById('form-success');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending...';
+
+        try {
+            await emailjs.send(
+                'service_08csa1p',
+                'template_lc1rmhb',
+                {
+                    name: document.getElementById('cf-name').value,
+                    email: document.getElementById('cf-email').value,
+                    subject: document.getElementById('cf-subject').value,
+                    message: document.getElementById('cf-message').value
+                }
+            );
+
+            successMessage.style.display = 'flex';
+            contactForm.reset();
+
+        } catch (error) {
+            console.error(error);
+            alert('Sorry, your message could not be sent.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Send Message';
+        }
+    });
+}
     const hamburger = document.getElementById("hamburger");
     const mobileMenu = document.getElementById("mobile-menu");
 
